@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Builder — JD Extractor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="resume_builder.css" />
+    <script src="lib/pdf.min.js"></script>
+</head>
+
+<body>
+
+    <!-- ===== TOP NAV ===== -->
+    <nav class="topnav">
+        <div class="nav-brand">
+            <!-- <span class="nav-icon"></span> -->
+            <span class="nav-title">JD Keyword Extractor</span>
+            <span class="nav-sep">/</span>
+            <span class="nav-page">Resume Builder</span>
+        </div>
+        <div class="nav-actions">
+            <button id="downloadTexBtn" class="btn btn-secondary" disabled>
+                <span>⬇</span> Download .tex
+            </button>
+            <button id="previewPdfBtn" class="btn btn-primary" disabled>
+                <span>🖨</span> Preview as PDF
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== MAIN LAYOUT ===== -->
+    <div class="builder-layout">
+
+        <!-- ===== LEFT PANEL: Keywords ===== -->
+        <aside class="panel panel-keywords">
+            <div class="panel-header">
+                <!-- <span class="panel-icon">⚡</span> -->
+                <h2 class="panel-title">Extracted Keywords</h2>
+                <span id="kwBadge" class="kw-badge">0</span>
+            </div>
+            <p class="panel-hint">These keywords will be injected into your resume's Technical Skills section.</p>
+            <div id="kwDisplay" class="kw-display">
+                <div class="kw-empty">
+                    <span class="kw-empty-icon">🔍</span>
+                    <p>No keywords loaded.<br />Go back to the popup and extract keywords first.</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ===== CENTER PANEL: Upload + Personal Info ===== -->
+        <main class="panel panel-main">
+
+            <!-- Personal Info -->
+            <div class="section-block">
+                <div class="section-header">
+                    <span>👤</span>
+                    <h3>Personal Information</h3>
+                    <span class="section-hint">Used to fill the resume header</span>
+                </div>
+                <div class="info-grid">
+                    <div class="field">
+                        <label for="inFullName">Full Name</label>
+                        <input id="inFullName" type="text" value="vab jhon" />
+                    </div>
+                    <div class="field">
+                        <label for="inLocation">Location</label>
+                        <input id="inLocation" type="text" value="Hyderabad" />
+                    </div>
+                    <div class="field">
+                        <label for="inEmail">Email</label>
+                        <input id="inEmail" type="email" value="vabjhon77@gmail.com" />
+                    </div>
+                    <div class="field">
+                        <label for="inPhone">Phone</label>
+                        <input id="inPhone" type="text" value="+91 9090909090" />
+                    </div>
+                    <div class="field">
+                        <label for="inLinkedIn">LinkedIn URL</label>
+                        <input id="inLinkedIn" type="url" value="https://www.linkedin.com/in/vabjhon/" />
+                    </div>
+                    <div class="field">
+                        <label for="inGithub">GitHub URL</label>
+                        <input id="inGithub" type="url" value="https://github.com/vabjhon" />
+                    </div>
+                    <div class="field field-full">
+                        <label for="inSummary">Professional Summary</label>
+                        <textarea id="inSummary"
+                            rows="3">Python Developer with 2+ years of experience in backend development using Django, Flask. Skilled in building scalable web applications, RESTful APIs, and microservices with PostgreSQL/MySQL, Redis, Celery. Proficient in AWS, Docker, CI/CD, and Agile practices, with strong debugging and troubleshooting skills.</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upload -->
+            <div class="section-block">
+                <div class="section-header">
+                    <span>📄</span>
+                    <h3>Upload Existing Resume <span class="optional">(optional)</span></h3>
+                    <span class="section-hint">Upload to auto-fill sections. Accepts .txt, .tex, .pdf</span>
+                </div>
+                <div id="dropZone" class="drop-zone">
+                    <div class="drop-content">
+                        <div class="drop-icon">📂</div>
+                        <p class="drop-text">Drag & drop your resume here</p>
+                        <p class="drop-sub">or</p>
+                        <label for="fileInput" class="btn btn-ghost btn-sm">Browse File</label>
+                        <input id="fileInput" type="file" accept=".txt,.tex,.pdf" hidden />
+                    </div>
+                    <div id="fileLoaded" class="file-loaded hidden">
+                        <span class="file-icon">✅</span>
+                        <span id="fileName" class="file-name">—</span>
+                        <button id="clearFileBtn" class="clear-file">✕</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Build Button -->
+            <div class="build-row">
+                <button id="buildBtn" class="btn btn-build">
+                    <span>🔨</span>
+                    <span>Generate Resume</span>
+                </button>
+                <span class="build-hint">Generates LaTeX code with your keywords injected</span>
+            </div>
+
+        </main>
+
+        <!-- ===== RIGHT PANEL: Output ===== -->
+        <aside class="panel panel-output">
+            <div class="panel-header">
+                <span class="panel-icon">📝</span>
+                <h2 class="panel-title">Generated LaTeX</h2>
+                <button id="copyLatexBtn" class="btn btn-ghost btn-xs" disabled>Copy</button>
+            </div>
+            <div id="outputEmpty" class="output-empty">
+                <div class="output-empty-icon">✨</div>
+                <p>Your generated LaTeX code will appear here.<br />Fill in your details and click <strong>Generate
+                        Resume</strong>.</p>
+            </div>
+            <pre id="latexOutput" class="latex-output hidden"><code id="latexCode"></code></pre>
+        </aside>
+
+    </div><!-- /builder-layout -->
+
+    <!-- ===== PDF PREVIEW MODAL ===== -->
+    <div id="pdfModal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Resume Preview</h3>
+                <div class="modal-actions">
+                    <button id="printBtn" class="btn btn-primary">🖨 Print / Save as PDF</button>
+                    <button id="closeModalBtn" class="btn btn-ghost">✕ Close</button>
+                </div>
+            </div>
+            <div id="resumePreview" class="resume-preview"></div>
+        </div>
+    </div>
+
+    <!-- ===== TOAST ===== -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="keywords.js"></script>
+    <script src="latex_template.js"></script>
+    <script src="resume_builder.js"></script>
+</body>
+
+</html>

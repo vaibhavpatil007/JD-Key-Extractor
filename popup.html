@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JD Keyword Extractor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <div class="logo-icon">🎯</div>
+            <div class="logo-text">
+                <span class="logo-title">JD Keyword Extractor</span>
+                <span class="logo-sub">Keyword Intelligence</span>
+            </div>
+        </div>
+        <div class="badge">AI</div>
+    </div>
+
+    <!-- Main Action -->
+    <button id="extractBtn" class="btn btn-primary">
+        <span class="btn-icon">⚡</span>
+        <span class="btn-label">Extract Keywords</span>
+    </button>
+
+    <!-- Stats Bar -->
+    <div id="statsBar" class="stats-bar hidden">
+        <div class="stat">
+            <span id="keywordCount" class="stat-value">0</span>
+            <span class="stat-label">Found</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+            <span id="categoryCount" class="stat-value">0</span>
+            <span class="stat-label">Categories</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+            <span id="matchScore" class="stat-value">0%</span>
+            <span class="stat-label">Coverage</span>
+        </div>
+    </div>
+
+    <!-- Empty / Loading / Result States -->
+    <div id="emptyState" class="empty-state">
+        <div class="empty-icon">🔍</div>
+        <p class="empty-text">Open a job listing page and click<br /><strong>Extract Keywords</strong> to begin</p>
+    </div>
+
+    <div id="loadingState" class="loading-state hidden">
+        <div class="spinner"></div>
+        <p class="loading-text">Scanning job description…</p>
+    </div>
+
+    <div id="result" class="result-area hidden"></div>
+
+    <!-- Action Buttons (Copy + Clear) -->
+    <div id="actionRow" class="action-row hidden">
+        <button id="copyBtn" class="btn btn-secondary">
+            <span class="btn-icon">📋</span>
+            <span>Copy All</span>
+        </button>
+        <button id="clearBtn" class="btn btn-ghost">
+            <span class="btn-icon">🗑️</span>
+            <span>Clear</span>
+        </button>
+    </div>
+
+    <!-- Build Resume Button — shown after extraction -->
+    <div id="buildResumeRow" class="build-resume-row hidden">
+        <button id="buildResumeBtn" class="btn btn-resume">
+            <span class="btn-icon">🔨</span>
+            <span>Build Resume with these Keywords</span>
+            <span class="arrow">→</span>
+        </button>
+    </div>
+
+    <!-- Copy Toast -->
+    <div id="toast" class="toast hidden">✅ Copied to clipboard!</div>
+
+    <!-- Footer CTA -->
+    <div class="footer">
+        <button id="optimizeBtn" class="btn btn-cta">
+            <!-- <span class="btn-icon">🚀</span> -->
+            <span>Optimize My Resume</span>
+            <span class="arrow">→</span>
+        </button>
+    </div>
+
+    <script src="keywords.js"></script>
+    <script src="popup.js"></script>
+</body>
+
+</html>

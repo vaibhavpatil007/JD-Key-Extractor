@@ -1,0 +1,35 @@
+{
+    "manifest_version": 3,
+    "name": "JD Keyword Extractor",
+    "description": "Extract important resume keywords from job descriptions and build a tailored resume.",
+    "version": "1.1",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "storage",
+        "tabs"
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "resume_builder.html"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ]
+}
