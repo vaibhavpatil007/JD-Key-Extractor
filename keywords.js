@@ -9,7 +9,8 @@ const KEYWORD_CATEGORIES = {
         keywords: [
             "Python", "JavaScript", "TypeScript", "Java", "C++", "C#",
             "Go", "Ruby", "PHP", "Swift", "Kotlin", "Rust", "Scala",
-            "R", "MATLAB", "Bash", "Shell"
+            "R", "MATLAB", "Bash", "Shell", "Solidity", "Zig", "Mojo",
+            "C", "Objective-C", "Perl", "Haskell", "Elixir", "Clojure"
         ]
     },
     frame: {
@@ -19,7 +20,9 @@ const KEYWORD_CATEGORIES = {
         keywords: [
             "Django", "Flask", "FastAPI", "React", "Angular", "Vue",
             "Next.js", "Node.js", "Express", "Spring Boot", "Laravel",
-            "TailwindCSS", "Bootstrap", "Redux", "GraphQL", "React Native"
+            "TailwindCSS", "Bootstrap", "Redux", "GraphQL", "React Native",
+            "Svelte", "Flutter", "Remix", "SolidJS", "Electron", "Qt",
+            "PySide", "Fast.ai", "Keras", "Streamlit", "Plotly", "D3.js"
         ]
     },
     db: {
@@ -29,7 +32,8 @@ const KEYWORD_CATEGORIES = {
         keywords: [
             "SQL", "MySQL", "PostgreSQL", "MongoDB", "Redis",
             "SQLite", "DynamoDB", "Cassandra", "Elasticsearch",
-            "Oracle", "Firebase"
+            "Oracle", "Firebase", "Pinecone", "Milvus", "Weaviate",
+            "Neo4j", "MariaDB", "CouchDB", "InfluxDB", "ClickHouse"
         ]
     },
     cloud: {
@@ -39,7 +43,8 @@ const KEYWORD_CATEGORIES = {
         keywords: [
             "AWS", "Azure", "GCP", "Google Cloud", "S3", "EC2",
             "Lambda", "Serverless", "Heroku", "Vercel", "Netlify",
-            "DigitalOcean", "CloudFlare"
+            "DigitalOcean", "CloudFlare", "Supabase", "Cloudinary",
+            "Auth0", "Appwrite", "Terraform Cloud", "CloudFormation"
         ]
     },
     devops: {
@@ -50,7 +55,8 @@ const KEYWORD_CATEGORIES = {
             "Docker", "Kubernetes", "Git", "GitHub", "GitLab", "CI/CD",
             "Jenkins", "Terraform", "Ansible", "Linux", "Nginx",
             "REST", "REST API", "API", "Microservices", "Agile", "Scrum",
-            "JIRA", "Postman"
+            "JIRA", "Postman", "Bitbucket", "CircleCI", "Prometheus",
+            "Grafana", "OpenTelemetry", "Datadog", "Sentry", "Helm"
         ]
     },
     ml: {
@@ -61,7 +67,9 @@ const KEYWORD_CATEGORIES = {
             "Machine Learning", "Deep Learning", "TensorFlow", "PyTorch",
             "OpenCV", "NLP", "LLM", "Transformers", "Scikit-learn",
             "Pandas", "NumPy", "Data Science", "Computer Vision",
-            "Generative AI", "LangChain"
+            "Generative AI", "LangChain", "OpenAI", "Anthropic",
+            "Llama", "Mistral", "Stable Diffusion", "Prompt Engineering",
+            "LangGraph", "Vector Database", "RAG", "Fine-tuning"
         ]
     },
     other: {
@@ -71,7 +79,9 @@ const KEYWORD_CATEGORIES = {
         keywords: [
             "HTML", "CSS", "JSON", "XML", "OAuth", "JWT", "SOAP",
             "WebSocket", "Kafka", "RabbitMQ", "gRPC", "Selenium",
-            "Unit Testing", "TDD", "OOP", "Design Patterns"
+            "Unit Testing", "TDD", "OOP", "Design Patterns", "Webpack",
+            "Vite", "ESLint", "Prettier", "Cybersecurity", "Blockchain",
+            "Web3", "Material UI", "Chakra UI", "Stripe"
         ]
     }
 };
