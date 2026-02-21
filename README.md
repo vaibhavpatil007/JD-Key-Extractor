@@ -54,3 +54,33 @@ All processing happens locally within the browser.
 
 ```bash
 https://github.com/vaibhavpatil007/JD-Key-Extractor.git
+
+### Step 2 — Open Chrome Extensions
+chrome://extensions/
+
+### Step 3 — Enable Developer Mode
+Turn ON Developer Mode (top-right corner).
+
+### Step 4 — Load Extension
+Click:
+Load Unpacked
+Select the project folder.
+
+### Step 4 — Use Extension
+Open any job description page.
+Click the extension icon.
+Extract keywords instantly.
+
+##Privacy
+
+This extension does not collect, store, or transmit any personal or sensitive user data.
+All analysis is performed locally within the browser.
+
+##Contributions
+Contributions, suggestions, and feedback are welcome.
+Feel free to open Issues or Pull Requests.
+
+
+Support
+
+If you found this project useful, consider giving it a ⭐ on GitHub.
