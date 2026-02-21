@@ -30,15 +30,20 @@ extractBtn.addEventListener("click", async () => {
 
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
-    chrome.tabs.sendMessage(tab.id, { action: "GET_JD_TEXT" }, (response) => {
+    try {
+        const results = await chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            func: () => document.body.innerText
+        });
+
         showLoading(false);
 
-        if (chrome.runtime.lastError || !response) {
+        if (!results || !results[0]) {
             showError("Couldn't read page content. Try refreshing the tab.");
             return;
         }
 
-        const jdText = response.jdText.toLowerCase();
+        const jdText = results[0].result.toLowerCase();
         const found = {};
 
         // Match per category
@@ -54,11 +59,13 @@ extractBtn.addEventListener("click", async () => {
             chrome.storage.local.set({ extractedKeywords: found });
         } else {
             showError("Storage permission not active. Please reload the extension at chrome://extensions/");
-            console.warn("chrome.storage.local is not available. Please reload the extension.");
         }
 
         displayKeywords(found);
-    });
+    } catch (err) {
+        showLoading(false);
+        showError("Injection failed: " + err.message);
+    }
 });
 
 // =============================================

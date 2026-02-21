@@ -397,7 +397,7 @@ function buildHtmlPreview() {
       </div>
       <div class="rp-exp-sub">xyz — Hyderabad, India</div>
       <ul class="rp-list">
-        <li>Maintained and enhanced a Form-as-a-Service (FaaS) platform using Django and DRF.</li>
+        <li>Maintained and enhanced a Form-as-a-Service (SaaS) platform using Django and DRF.</li>
         <li>Designed secure communication using AES-based encryption and decryption.</li>
         <li>Developed RBAC and token-based authentication mechanisms.</li>
         <li>Performed API penetration testing using Burp Suite and remediated vulnerabilities.</li>
@@ -444,7 +444,7 @@ function buildHtmlPreview() {
     <div class="rp-section">Projects</div>
 
     <div class="rp-proj-block">
-      <strong>FaaS – Form as a Service</strong>
+      <strong>SaaS – Form as a Service</strong>
       <ul class="rp-list">
         <li>Web app for managing event-linked forms with automation features.</li>
         <li>Tech Stack: Django DRF, React, MySQL</li>
